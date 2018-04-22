@@ -21,7 +21,7 @@ sudo minikube start --vm-driver=none --kubernetes-version=v1.9.0
 # Fix the kubectl context, as it's often stale.
 minikube update-context
 # Enable ingress in minikube
-minikube addons enable ingress
+sudo minikube addons enable ingress
 # Wait for Kubernetes to be up and ready.
 JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl get nodes -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1; done
 # Install helm
