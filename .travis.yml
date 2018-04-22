@@ -1,0 +1,12 @@
+sudo: required
+
+# This moves Kubernetes specific config files.
+env:
+- CHANGE_MINIKUBE_NONE_USER=true
+before_script:
+- sh init_cluster.sh
+
+script:
+- kubectl cluster-info 
+- kubectl run travis-example --image=redis
+- kubectl get deployment
